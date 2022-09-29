@@ -1,0 +1,56 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "react-app",
+    "airbnb",
+    "prettier",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react/jsx-runtime"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "jsx-quotes": [1, "prefer-double"],
+    "quotes": ["warn", "double", { "allowTemplateLiterals": true }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+    "no-unused-vars": "warn",
+    "no-dupe-keys": "warn",
+    "consistent-return": "off",
+    "import/prefer-default-export": 0,
+    "eqeqeq": 1,
+    "react/no-array-index-key": "warn",
+    "no-nested-ternary": 0,
+    "react/self-closing-comp": "warn",
+    "react/require-default-props": "off",
+    "react/jsx-fragments":"off",
+    "react/function-component-definition": "off",
+    "arrow-body-style":"off",
+    "react/jsx-props-no-spreading":"warn"
+  }
+}
