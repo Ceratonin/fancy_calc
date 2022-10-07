@@ -1,0 +1,47 @@
+.button {
+  position: relative;
+  width: 80%;
+  padding-top: 80%;
+  place-self: center;
+  border-radius: 50%;
+  cursor: pointer;
+
+  -webkit-transition: background-color 200ms linear;
+  -moz-transition: background-color 200ms linear;
+  -o-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+
+  &_equals {
+    color: #2b589a;
+    background-color: white;
+    transition: none;
+  }
+
+  &:hover {
+    &:not(.button_equals) {
+      background-color: rgb(255, 255, 255, 0.12);
+    }
+  }
+
+  &:active {
+    &:not(.button_equals) {
+      background-color: rgb(255, 255, 255, 0.5);
+    }
+  }
+
+  .button__text {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+    &_equals {
+      padding-top: 0.1rem;
+    }
+  }
+}
