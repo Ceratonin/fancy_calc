@@ -7,19 +7,23 @@ import StringParser from "../../utils/mathLogic/StringParser";
 
 const Main = () => {
   const [expressionInp, setExpressionInp] = useState("");
-  const [correctExpression, setCorrectExpression] = useState("")
+  const [expressionInfo, setExpressionInfo] = useState("");
 
-  const calculation = (value: string) => {
-    setCorrectExpression(StringParser(value).join(""));
-    // eslint-disable-next-line no-eval
-    return eval(value);
+  const calculation = () => {
+    try {
+      setExpressionInfo(StringParser(expressionInp).join(""));
+      // eslint-disable-next-line no-eval
+      return eval(expressionInp);
+    } catch {
+      setExpressionInfo("Wrong Expression");
+      return false;
+    }
   };
 
   useEffect(() => {
     const keyDownHandler = (event: { key: string }) => {
-      if (event.key === "Enter") {
-        setExpressionInp(calculation(expressionInp));
-      }
+      if (event.key === "Enter" && calculation())
+        setExpressionInp(calculation());
     };
 
     document.addEventListener("keydown", keyDownHandler);
@@ -41,8 +45,8 @@ const Main = () => {
       <div className="main-wrapper">
         <div className="main-background">
           <div className="main">
-            <Expression correctExpression={correctExpression} />
-            <Display/>
+            <Expression expressionInfo={expressionInfo} />
+            <Display />
             <hr />
             <Panel />
           </div>

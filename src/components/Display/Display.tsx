@@ -6,7 +6,6 @@ import {
   useContext,
 } from "react";
 import expressionContext from "../../contexts/expressionContext";
-import StringParser from "../../utils/mathLogic/StringParser";
 
 const Display = () => {
   const { expressionInp, setExpressionInp } = useContext(expressionContext);
@@ -36,26 +35,6 @@ const Display = () => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setExpressionInp(e.target.value);
   };
-
-  // const calculation = (value: string) => {
-  //   StringParser(expressionInp);
-  //   // eslint-disable-next-line no-eval
-  //   return eval(value);
-  // };
-
-  // useEffect(() => {
-  //   const keyDownHandler = (event: { key: string }) => {
-  //     if (event.key === "Enter") {
-  //       setExpressionInp(calculation(expressionInp));
-  //     }
-  //   };
-
-  //   document.addEventListener("keydown", keyDownHandler);
-
-  //   return () => {
-  //     document.removeEventListener("keydown", keyDownHandler);
-  //   };
-  // }, [expressionInp]);
 
   return (
     <input

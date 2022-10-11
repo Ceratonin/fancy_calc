@@ -1,5 +1,6 @@
-const Expression = ({ correctExpression }: any) => {
-  return <div className="expression">{correctExpression}</div>;
+const Expression = ({ expressionInfo }: any) => {
+  console.log(expressionInfo)
+  return <div className={`expression ${expressionInfo === "Wrong Expression" ? "error" : ""}`}>{expressionInfo}</div>;
 };
 
 export default Expression;
