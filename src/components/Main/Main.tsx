@@ -48,7 +48,6 @@ const Main = () => {
           </div>
         </div>
       </div>
-      ‰{" "}
     </expressionContext.Provider>
   );
 };
