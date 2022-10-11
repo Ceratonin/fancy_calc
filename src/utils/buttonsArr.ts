@@ -1,8 +1,8 @@
 export const buttonsArr = new Map<string, string>([
-  ["clean", "C"],
+  ["clear", "C"],
   ["sqrt", "√"],
   ["percent", "%"],
-  ["division", "/"],
+  ["divide", "/"],
   ["seven", "7"],
   ["eight", "8"],
   ["nine", "9"],

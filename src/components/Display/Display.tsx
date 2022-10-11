@@ -1,7 +1,15 @@
-import { useState, ChangeEvent, KeyboardEvent, useEffect } from "react";
+import {
+  useState,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+  useContext,
+} from "react";
+import expressionContext from "../../contexts/expressionContext";
+import StringParser from "../../utils/mathLogic/StringParser";
 
 const Display = () => {
-  const [val, setVal] = useState("");
+  const { expressionInp, setExpressionInp } = useContext(expressionContext);
 
   const letterCheck = (e: KeyboardEvent<HTMLInputElement>) => {
     const { key } = e;
@@ -26,27 +34,28 @@ const Display = () => {
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setVal(e.target.value);
+    setExpressionInp(e.target.value);
   };
 
-  const calculation = (value: string) => {
-    // eslint-disable-next-line no-eval
-    return eval(value);
-  };
+  // const calculation = (value: string) => {
+  //   StringParser(expressionInp);
+  //   // eslint-disable-next-line no-eval
+  //   return eval(value);
+  // };
 
-  useEffect(() => {
-    const keyDownHandler = (event: { key: string }) => {
-      if (event.key === "Enter") {
-        setVal(calculation(val));
-      }
-    };
+  // useEffect(() => {
+  //   const keyDownHandler = (event: { key: string }) => {
+  //     if (event.key === "Enter") {
+  //       setExpressionInp(calculation(expressionInp));
+  //     }
+  //   };
 
-    document.addEventListener("keydown", keyDownHandler);
+  //   document.addEventListener("keydown", keyDownHandler);
 
-    return () => {
-      document.removeEventListener("keydown", keyDownHandler);
-    };
-  }, [val]);
+  //   return () => {
+  //     document.removeEventListener("keydown", keyDownHandler);
+  //   };
+  // }, [expressionInp]);
 
   return (
     <input
@@ -54,7 +63,7 @@ const Display = () => {
       className="display"
       onKeyDown={letterCheck}
       onChange={handleChange}
-      value={val}
+      value={expressionInp}
     />
   );
 };
