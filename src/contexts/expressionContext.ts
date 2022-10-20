@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { IExpressionContext } from "../utils/contextTypes";
+import { IExpressionContext } from "./contextTypes";
 
 const expressionContext = createContext({} as IExpressionContext);
 

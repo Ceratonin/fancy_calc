@@ -4,5 +4,16 @@ export interface IButton {
 }
 
 export interface IExpression {
-  expressionInfo: string
+  expressionInfo: string;
+}
+
+export interface IOperators {
+  [key: string]: {
+    precedence: number;
+    associativity: string;
+  };
+}
+
+export interface IParseTokens {
+  (_token: string, i: number, expressionArr: string[]): void;
 }

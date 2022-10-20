@@ -3,7 +3,8 @@ import Expression from "../Expression/Expression";
 import Panel from "../Panel/Panel";
 import Display from "../Display/Display";
 import expressionContext from "../../contexts/expressionContext";
-import StringParser from "../../utils/mathLogic/StringParser";
+import { solver } from "../../utils/mathLogic/mathEvaluate/solver";
+import { cleanTokenizer } from "../../utils/mathLogic/cleanTokenizer";
 
 const Main = () => {
   const [expressionInp, setExpressionInp] = useState("");
@@ -11,19 +12,17 @@ const Main = () => {
 
   const calculation = () => {
     try {
-      setExpressionInfo(StringParser(expressionInp).join(""));
-      // eslint-disable-next-line no-eval
-      return eval(expressionInp);
-    } catch {
-      setExpressionInfo("Wrong Expression");
-      return false;
+      setExpressionInfo(cleanTokenizer(expressionInp));
+      return solver(expressionInp)
+    } catch(err) {
+      setExpressionInfo(`${err}`);
     }
   };
 
   useEffect(() => {
     const keyDownHandler = (event: { key: string }) => {
       if (event.key === "Enter" && calculation())
-        setExpressionInp(calculation());
+        setExpressionInp(calculation()!);
     };
 
     document.addEventListener("keydown", keyDownHandler);

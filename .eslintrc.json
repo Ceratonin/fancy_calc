@@ -39,7 +39,8 @@
       1,
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     "no-dupe-keys": "warn",
     "consistent-return": "off",
     "import/prefer-default-export": 0,
@@ -51,6 +52,7 @@
     "react/jsx-fragments":"off",
     "react/function-component-definition": "off",
     "arrow-body-style":"off",
-    "react/jsx-props-no-spreading":"warn"
+    "react/jsx-props-no-spreading":"warn",
+    "prefer-const":"warn"
   }
 }

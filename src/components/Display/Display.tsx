@@ -1,10 +1,4 @@
-import {
-  useState,
-  ChangeEvent,
-  KeyboardEvent,
-  useEffect,
-  useContext,
-} from "react";
+import { ChangeEvent, KeyboardEvent, useContext } from "react";
 import expressionContext from "../../contexts/expressionContext";
 
 const Display = () => {
@@ -12,7 +6,7 @@ const Display = () => {
 
   const letterCheck = (e: KeyboardEvent<HTMLInputElement>) => {
     const { key } = e;
-    const regexp = /[(-9√]/g;
+    const regexp = /[(-9√%]/g;
 
     if (
       ((e.metaKey || e.ctrlKey) &&
@@ -23,7 +17,9 @@ const Display = () => {
       key === "ArrowDown" ||
       key === "Backspace" ||
       key === "Delete" ||
-      key === " "
+      key === " " ||
+      key === "e" ||
+      key === "е"
     )
       return;
 
