@@ -21,8 +21,10 @@ describe("simple expressions", () => {
     expect(tokenizer(inputString)).toEqual(["√", "64"]);
   });
   test("float number", () => {
-    const inputString = "1.234";
-    expect(tokenizer(inputString)).toEqual(["1.234"]);
+    const inputString1 = "1.234";
+    const inputString2 = "1,23";
+    expect(tokenizer(inputString1)).toEqual(["1.234"]);
+    expect(tokenizer(inputString2)).toEqual(["1.23"]);
   });
   test("unexpected expression end error", () => {
     const inputString1 = "12+13-";
@@ -45,13 +47,21 @@ describe("unary", () => {
 
 describe("token errors", () => {
   test("parse float", () => {
-    const inputString1 = "1.";
-    const inputString2 = "1.+";
+    const inputString1 = "1,";
+    const inputString2 = "1,+";
+    const inputString3 = "1,.";
+    const inputString4 = "1.,";
     expect(() => tokenizer(inputString1)).toThrow(
-      "Unexpected Expression End after Dot symbol"
+      "Unexpected Expression End after Comma symbol"
     );
     expect(() => tokenizer(inputString2)).toThrow(
-      `Unexpected character "+" after Dot symbol`
+      `Unexpected character "+" after Comma symbol`
+    );
+    expect(() => tokenizer(inputString3)).toThrow(
+      `Unexpected character "." after Comma symbol`
+    );
+    expect(() => tokenizer(inputString4)).toThrow(
+      `Unexpected character "," after Comma symbol`
     );
   });
   test("parse percentage", () => {

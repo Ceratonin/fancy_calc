@@ -83,5 +83,5 @@ export const rpnSolver = (rpn: string[]) => {
   }
 
   const fixedResult = Number(numberStack[0].toFixed(5));
-  return fixedResult.toString();
+  return fixedResult.toString().replace(".", ",");
 };

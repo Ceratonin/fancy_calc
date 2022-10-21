@@ -17,21 +17,24 @@ export const parseFloat: IParseTokens = (_token, i, _expressionArr) => {
     return currToken;
   };
 
-  if (token !== ".") {
+  if (token !== "." && token !== ",") {
     number = consumeCurrToken();
 
     token = getCurrToken();
   }
 
-  if (token === ".") {
-    number += consumeCurrToken();
+  if (token === "." || token === ",") {
+    if (token === ",") {
+      number += ".";
+      currPos += 1;
+    } else number += consumeCurrToken();
 
     token = getCurrToken();
     if (isNumber(token)) {
       number += consumeCurrToken();
       expressionArr.splice(currPos - 3, 3, number);
     } else if (!token)
-      throw new Error(`Unexpected Expression End after Dot symbol`);
-    else throw new Error(`Unexpected character "${token}" after Dot symbol`);
+      throw new Error(`Unexpected Expression End after Comma symbol`);
+    else throw new Error(`Unexpected character "${token}" after Comma symbol`);
   }
 };
