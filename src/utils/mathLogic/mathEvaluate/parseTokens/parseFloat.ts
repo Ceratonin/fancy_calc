@@ -32,6 +32,6 @@ export const parseFloat: IParseTokens = (_token, i, _expressionArr) => {
       expressionArr.splice(currPos - 3, 3, number);
     } else if (!token)
       throw new Error(`Unexpected Expression End after Dot symbol`);
-    else throw new Error(`Unexpected character ${token} after Dot symbol`);
+    else throw new Error(`Unexpected character "${token}" after Dot symbol`);
   }
 };
