@@ -6,15 +6,13 @@ import {
   isSqrt,
   isUnary,
 } from "../helpers";
-import { tokenizer } from "./tokenizer";
 
-export const shuntingParser = (expressionInp: string) => {
+export const shuntingParser = (tokensArr: string[]) => {
   const outputQueue: string[] = [];
   const operatorStack: string[] = [];
-  const elements = tokenizer(expressionInp);
 
-  for (let i = 0; i < elements.length; i += 1) {
-    const token = elements[i];
+  for (let i = 0; i < tokensArr.length; i += 1) {
+    const token = tokensArr[i];
     if (isNumber(token)) outputQueue.push(token);
 
     if (

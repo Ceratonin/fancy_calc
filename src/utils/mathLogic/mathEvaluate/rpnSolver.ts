@@ -1,14 +1,12 @@
 import { isOperator, isPercentage, isSqrt, isUnary } from "../helpers";
 import { sqrtEval } from "../sqrtEval";
-import { shuntingParser } from "./shuntingParser";
 
-export const solver = (expressionInp: string) => {
+export const rpnSolver = (rpn: string[]) => {
   const numberStack: number[] = [];
   let result = 0;
-  const outputQueue: string[] = shuntingParser(expressionInp);
 
-  for (let i = 0; i < outputQueue.length; i += 1) {
-    const token = outputQueue[i];
+  for (let i = 0; i < rpn.length; i += 1) {
+    const token = rpn[i];
     if (isOperator(token)) {
       const num2 = numberStack.pop();
       const num1 = numberStack.pop();
@@ -45,11 +43,11 @@ export const solver = (expressionInp: string) => {
 
       numberStack.push(result);
     } else if (isPercentage(token)) {
-      if (isOperator(outputQueue[i + 1])) {
+      if (isOperator(rpn[i + 1])) {
         const num2 = numberStack.pop();
         const num1 = numberStack.pop();
 
-        const op = outputQueue.splice(i + 1, 1)[0];
+        const op = rpn.splice(i + 1, 1)[0];
 
         if (num1 && num2)
           switch (op) {

@@ -3,8 +3,8 @@ import Expression from "../Expression/Expression";
 import Panel from "../Panel/Panel";
 import Display from "../Display/Display";
 import expressionContext from "../../contexts/expressionContext";
-import { solver } from "../../utils/mathLogic/mathEvaluate/solver";
 import { cleanTokenizer } from "../../utils/mathLogic/cleanTokenizer";
+import { mathEvaluate } from "../../utils/mathLogic/mathEvaluate/mathEvaluate";
 
 const Main = () => {
   const [expressionInp, setExpressionInp] = useState("");
@@ -13,8 +13,8 @@ const Main = () => {
   const calculation = () => {
     try {
       setExpressionInfo(cleanTokenizer(expressionInp));
-      return solver(expressionInp)
-    } catch(err) {
+      return mathEvaluate(expressionInp);
+    } catch (err) {
       setExpressionInfo(`${err}`);
     }
   };
