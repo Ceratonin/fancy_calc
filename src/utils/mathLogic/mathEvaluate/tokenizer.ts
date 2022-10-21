@@ -1,4 +1,10 @@
-import { isNumber, isOperator, isPercentage, isSqrt } from "../helpers";
+import {
+  isAcceptedToken,
+  isNumber,
+  isOperator,
+  isPercentage,
+  isSqrt,
+} from "../helpers";
 import { parseFloat } from "./parseTokens/parseFloat";
 import {
   checkParenthesis,
@@ -17,7 +23,6 @@ export const tokenizer = (expressionInp: string) => {
 
   for (let i = 0; i < expressionArr.length; i += 1) {
     const token = expressionArr[i];
-
     if (isNumber(token)) parseFloat(token, i, expressionArr);
 
     if (/[+-]/.test(token)) parseUnary(token, i, expressionArr);
@@ -29,6 +34,9 @@ export const tokenizer = (expressionInp: string) => {
     if (isSqrt(token)) parseSqrt(token, i, expressionArr);
 
     if (isPercentage(token)) parsePercentage(token, i, expressionArr);
+
+    if (isAcceptedToken(token) === undefined)
+      throw new Error(`Unexpected character "${token}"`);
   }
 
   if (checkParenthesis() !== 0) throw new Error("Incorrect Parenthesis");

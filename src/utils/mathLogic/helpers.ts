@@ -17,3 +17,16 @@ export const isPercentage = (token: string) => {
 export const isSqrt = (token: string) => {
   if (token === "√") return token;
 };
+
+export const isAcceptedToken = (token: string) => {
+  if (
+    isNumber(token) ||
+    isOperator(token) ||
+    isUnary(token) ||
+    isPercentage(token) ||
+    isSqrt(token) ||
+    token === "(" ||
+    token === ")"
+  )
+    return token;
+};
