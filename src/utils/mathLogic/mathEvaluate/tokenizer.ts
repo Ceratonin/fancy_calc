@@ -31,12 +31,11 @@ export const tokenizer = (expressionInp: string) => {
     if (isPercentage(token)) parsePercentage(token, i, expressionArr);
   }
 
-  if (checkParenthesis()) throw new Error("Incorrect Parenthesis");
+  if (checkParenthesis() !== 0) throw new Error("Incorrect Parenthesis");
 
   if (expressionArr.length === 0) throw new Error("Expression Expected");
 
   if (isOperator(expressionArr[expressionArr.length - 1]))
     throw new Error("Unexpected Expression End");
-
   return expressionArr;
 };
