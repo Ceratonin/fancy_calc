@@ -7,13 +7,14 @@ export const parseUnary: IParseTokens = (_token, i, _expressionArr) => {
   const prevToken = expressionArr[i - 1];
   const nextToken = expressionArr[i + 1];
 
+  console.log(_token, i, expressionArr);
   if (!prevToken || /[√(*/+-]/.test(prevToken)) {
     if (_token === "+") unary = "_uP";
     else unary = "_uM";
 
     expressionArr[i] = unary;
-  }
 
-  if (isOperator(nextToken) || isPercentage(nextToken))
-    throw new Error(`Unexpected character ${nextToken} after Unary Operator`);
+    if (isOperator(nextToken) || isPercentage(nextToken))
+      throw new Error(`Unexpected character ${nextToken} after Unary Operator`);
+  }
 };
