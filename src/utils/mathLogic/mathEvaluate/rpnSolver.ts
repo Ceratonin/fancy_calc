@@ -79,7 +79,6 @@ export const rpnSolver = (rpn: string[]) => {
       numberStack.push(result);
     } else if (isSqrt(token)) {
       const num = numberStack.pop();
-
       result = sqrtEval(num!);
 
       numberStack.push(result);
