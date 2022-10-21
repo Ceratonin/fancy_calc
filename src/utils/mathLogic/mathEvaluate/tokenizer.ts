@@ -4,6 +4,7 @@ import {
   isOperator,
   isPercentage,
   isSqrt,
+  isUnary,
 } from "../helpers";
 import { parseFloat } from "./parseTokens/parseFloat";
 import {
@@ -38,12 +39,12 @@ export const tokenizer = (expressionInp: string) => {
     if (isAcceptedToken(token) === undefined)
       throw new Error(`Unexpected character "${token}"`);
   }
+  const lastToken = expressionArr[expressionArr.length - 1];
 
   if (checkParenthesis() !== 0) throw new Error("Incorrect Parenthesis");
 
   if (expressionArr.length === 0) throw new Error("Expression Expected");
-
-  if (isOperator(expressionArr[expressionArr.length - 1]))
+  if (isOperator(lastToken) || isSqrt(lastToken) || isUnary(lastToken))
     throw new Error("Unexpected Expression End");
   return expressionArr;
 };
