@@ -4,7 +4,7 @@ import Panel from "../Panel/Panel";
 import Display from "../Display/Display";
 import expressionContext from "../../contexts/expressionContext";
 import { cleanTokenizer } from "../../utils/mathLogic/cleanTokenizer";
-import { mathEvaluate } from "../../utils/mathLogic/mathEvaluate/mathEvaluate";
+import { mathEvaluate } from "../../utils/mathLogic/mathEvaluate";
 
 const Main = () => {
   const [expressionInp, setExpressionInp] = useState("");

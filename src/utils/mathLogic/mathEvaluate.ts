@@ -1,6 +1,6 @@
-import { shuntingParser } from "./shuntingParser";
-import { rpnSolver } from "./rpnSolver";
-import { tokenizer } from "./tokenizer";
+import { shuntingParser } from "./mathEvaluate/shuntingParser";
+import { rpnSolver } from "./mathEvaluate/rpnSolver";
+import { tokenizer } from "./mathEvaluate/tokenizer";
 
 export const mathEvaluate = (expressionInp: string) => {
   const tokensArr = tokenizer(expressionInp);
