@@ -71,6 +71,9 @@ export const rpnSolver = (rpn: string[]) => {
             default:
               return;
           }
+      } else {
+        const num = numberStack.pop()!;
+        result = num * 0.01;
       }
 
       numberStack.push(result);
@@ -81,6 +84,8 @@ export const rpnSolver = (rpn: string[]) => {
 
       numberStack.push(result);
     } else numberStack.push(+token);
+
+    console.log(numberStack, result, token);
   }
 
   const fixedResult = Number(numberStack[0].toFixed(5));
