@@ -22,6 +22,7 @@ export const rpnSolver = (rpn: string[]) => {
             break;
 
           case "*":
+          case "×":
             result = num1 * num2;
             break;
 

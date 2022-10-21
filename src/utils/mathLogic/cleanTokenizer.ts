@@ -3,7 +3,9 @@ export const cleanTokenizer = (expressionInp: string) => {
   const expressionArr = expressionInp
     .split(expressionRegExp)
     .filter((token) => token !== "")
-    .join("");
+    .join("")
+    .replace(".", ",")
+    .replace("*", "×");
 
   return expressionArr;
 };

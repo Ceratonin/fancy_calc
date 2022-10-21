@@ -3,7 +3,7 @@ export const isNumber = (token: string) => {
 };
 
 export const isOperator = (token: string) => {
-  if (/[-+*/]/.test(token)) return token;
+  if (/[-+*/×]/.test(token)) return token;
 };
 
 export const isUnary = (token: string) => {

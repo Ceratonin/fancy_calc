@@ -2,13 +2,14 @@ import { tokenizer } from "./tokenizer";
 
 describe("simple expressions", () => {
   test("operators", () => {
-    const operatorsArr = ["-", "+", "*", "/"];
+    const operatorsArr = ["-", "+", "*", "×", "/"];
     const expectedArr: string[][] = [];
     operatorsArr.forEach((op) => expectedArr.push(tokenizer(`6 ${op} 2`)));
     expect(expectedArr).toEqual([
       ["6", "-", "2"],
       ["6", "+", "2"],
       ["6", "*", "2"],
+      ["6", "×", "2"],
       ["6", "/", "2"],
     ]);
   });
