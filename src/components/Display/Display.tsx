@@ -4,13 +4,13 @@ import expressionContext from "../../contexts/expressionContext";
 const Display = () => {
   const { expressionInp, setExpressionInp } = useContext(expressionContext);
 
-  const letterCheck = (e: KeyboardEvent<HTMLInputElement>) => {
-    const { key } = e;
+  const keyCheck = (e: KeyboardEvent<HTMLInputElement>) => {
+    const { key, code } = e;
     const regexp = /[(-9√%]/g;
 
     if (
       ((e.metaKey || e.ctrlKey) &&
-        (key === "v" || key === "c" || key === "x")) ||
+        (code === "KeyC" || code === "KeyV" || code === "KeyX")) ||
       key === "ArrowLeft" ||
       key === "ArrowRight" ||
       key === "ArrowUp" ||
@@ -36,7 +36,7 @@ const Display = () => {
     <input
       type="text"
       className="display"
-      onKeyDown={letterCheck}
+      onKeyDown={keyCheck}
       onChange={handleChange}
       value={expressionInp}
     />
