@@ -84,8 +84,6 @@ export const rpnSolver = (rpn: string[]) => {
 
       numberStack.push(result);
     } else numberStack.push(+token);
-
-    console.log(numberStack, result, token);
   }
 
   const fixedResult = Number(numberStack[0].toFixed(5));
