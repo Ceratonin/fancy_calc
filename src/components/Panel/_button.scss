@@ -5,6 +5,9 @@
   place-self: center;
   border-radius: 50%;
   cursor: pointer;
+  border: none;
+  color: white;
+  background-color: inherit;
 
   -webkit-transition: background-color 200ms linear;
   -moz-transition: background-color 200ms linear;
@@ -28,6 +31,10 @@
     &:not(.button_equals) {
       background-color: rgb(255, 255, 255, 0.5);
     }
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 
   .button__text {

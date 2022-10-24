@@ -15,14 +15,20 @@ const Main = () => {
       setExpressionInfo(cleanTokenizer(expressionInp));
       return mathEvaluate(expressionInp);
     } catch (err) {
-      setExpressionInfo(`${err}`);
+      if (err instanceof Error) setExpressionInfo(err.message);
     }
   };
 
   useEffect(() => {
-    const keyDownHandler = (event: { key: string }) => {
-      if (event.key === "Enter" && calculation())
+    const keyDownHandler = (e: any) => {
+      if (e.key === "Escape") setExpressionInp("");
+
+      if ((e.key === "Enter" || e.key === "=") && calculation())
         setExpressionInp(calculation()!);
+
+      if (e.target.tagName === "INPUT") return;
+
+      if (/^[(-9√%]/.test(e.key)) setExpressionInp(expressionInp + e.key);
     };
 
     document.addEventListener("keydown", keyDownHandler);

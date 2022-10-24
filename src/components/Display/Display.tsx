@@ -17,9 +17,7 @@ const Display = () => {
       key === "ArrowDown" ||
       key === "Backspace" ||
       key === "Delete" ||
-      key === " " ||
-      key === "e" ||
-      key === "е"
+      key === " "
     )
       return;
 

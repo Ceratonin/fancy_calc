@@ -53,6 +53,7 @@
     "react/function-component-definition": "off",
     "arrow-body-style":"off",
     "react/jsx-props-no-spreading":"warn",
-    "prefer-const":"warn"
+    "prefer-const":"warn",
+    "jsx-a11y/no-static-element-interactions":"off"
   }
 }
